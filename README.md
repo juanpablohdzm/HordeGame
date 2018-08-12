@@ -13,9 +13,15 @@ A basic multiplayer third-person shooter, made with Unreal Engine 4. The objecti
 </ul>
 
 <h4> Instructions </h4>
-
 <ul>
-	<li> One of the party has to be the host. </li>
+	<li>One of the party has to be the host. </li>
+	<li>If all of you die game is over</li>
+	<li>If one of you survives to the next wave the other will respawn</li>
+</ul>
+
+<h4> Controls </h4>
+<ul>
+	
 	<li> Move forward with: W,I,UpArrow. </li>
 	<li> Move Backwards with: S,K, DownArrow. </li>
 	<li> Move Right with: D,L,RightArrow. </li>
