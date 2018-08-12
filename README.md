@@ -21,7 +21,6 @@ A basic multiplayer third-person shooter, made with Unreal Engine 4. The objecti
 
 <h4> Controls </h4>
 <ul>
-	
 	<li> Move forward with: W,I,UpArrow. </li>
 	<li> Move Backwards with: S,K, DownArrow. </li>
 	<li> Move Right with: D,L,RightArrow. </li>
