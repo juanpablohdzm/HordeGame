@@ -23,7 +23,7 @@ ASExplosiveBarrel::ASExplosiveBarrel()
 	RootComponent = MeshComp;
 
 	
-	
+	//Create a default component to do a radial impulse
 	RadialForceComp = CreateDefaultSubobject<URadialForceComponent>(TEXT("RadialForceComp"));
 	RadialForceComp->SetupAttachment(MeshComp);
 	RadialForceComp->Radius = 250.0f;
