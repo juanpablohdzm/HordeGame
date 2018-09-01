@@ -47,16 +47,18 @@ void ASWeapon::BeginPlay()
 void ASWeapon::Fire()
 {
 	//Trace the world, from pawn eyes to crosshair location
+	if (CurrentAmmo >= MaxAmmo || CurrentRound >= MaxRound) return;
+
 	if (Role < ROLE_Authority)
 	{
 		ASCharacter * MyOwner = Cast<ASCharacter>(GetOwner());
-		MyOwner->BulletCount++;
+ 		MyOwner->BulletCount++;
 
 		ServerFire();
 		return;
 	}
 
-	if (CurrentAmmo >= MaxAmmo || CurrentRound >= MaxRound) return;
+	
 
 	ASCharacter * MyOwner = Cast<ASCharacter>(GetOwner());
 	if (MyOwner)

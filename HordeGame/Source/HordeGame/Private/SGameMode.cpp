@@ -57,6 +57,11 @@ void ASGameMode::PrepareForNextWave()
 void ASGameMode::StartWave()
 {
 	WaveCount++;
+	ASGameState * GS = GetGameState<ASGameState>();
+	if (ensureAlways(GS))
+	{
+		GS->CurrentWaveNum++;
+	}
 	NrOfBotsToSpawn = 2 * WaveCount;
 	GetWorldTimerManager().SetTimer(TimerHandle_BotSpawner,this,&ASGameMode::SpawnBotTimerElapsed,1.0f,true,0.0f);
 	SetWaveState(EWaveState::WaveInProgress);

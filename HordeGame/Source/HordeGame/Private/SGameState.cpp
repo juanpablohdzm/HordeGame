@@ -16,6 +16,6 @@ void ASGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifet
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ASGameState, WaveState);
-
+	DOREPLIFETIME(ASGameState, CurrentWaveNum);
 	
 }

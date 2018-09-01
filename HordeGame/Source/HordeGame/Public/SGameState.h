@@ -30,6 +30,8 @@ class HORDEGAME_API ASGameState : public AGameStateBase
 	
 public:
 	
+	UPROPERTY(Replicated,BlueprintReadOnly,Category="Game State")
+	int CurrentWaveNum=0;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "GameState")
 	void WaveStateChanged(EWaveState NewState, EWaveState OldState);
