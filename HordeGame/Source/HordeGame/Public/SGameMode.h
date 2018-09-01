@@ -23,6 +23,9 @@ public:
 
 	virtual void StartPlay() override;
 
+	UFUNCTION(BlueprintCallable,Category="GameMode")
+	virtual void ReadyToPlay();
+
 	virtual void Tick(float DeltaSeconds) override;
 
 	UPROPERTY(BlueprintAssignable, Category = "GameMode")

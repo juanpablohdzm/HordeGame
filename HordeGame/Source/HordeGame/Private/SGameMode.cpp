@@ -26,6 +26,11 @@ ASGameMode::ASGameMode()
 void ASGameMode::StartPlay()
 {
 	Super::StartPlay();
+
+}
+
+void ASGameMode::ReadyToPlay()
+{
 	PrepareForNextWave();
 }
 
