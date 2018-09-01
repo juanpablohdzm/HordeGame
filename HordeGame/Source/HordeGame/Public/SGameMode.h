@@ -72,10 +72,16 @@ protected:
 	UPROPERTY(EditDefaultsOnly,Category="GameMode")
 	int32 NrOfBotsToSpawn;
 
-	int32 WaveCount;
-
 	UPROPERTY(EditDefaultsOnly, Category = "GameMode")
 	float TimeBetweenWaves;
+
+	bool bIsReadyToPlay;
+
+public:
+	UPROPERTY(BlueprintReadOnly, Category="GameMode")
+	int32 WaveCount;
+
+	
 
 	
 	

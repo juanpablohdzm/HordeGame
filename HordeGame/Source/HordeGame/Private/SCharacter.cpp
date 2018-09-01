@@ -108,7 +108,6 @@ void ASCharacter::StartFire()
 {
 	if (Weapon)
 	{
-		BulletCount++;
 		Weapon->StartFire();
 	}
 }
@@ -125,6 +124,7 @@ void ASCharacter::ReloadWeapon()
 {
 	if (Weapon)
 	{
+		BulletCount = 0;
 		Weapon->Reload();
 	}
 }

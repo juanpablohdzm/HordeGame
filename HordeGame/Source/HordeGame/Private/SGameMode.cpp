@@ -17,6 +17,8 @@ ASGameMode::ASGameMode()
 	GameStateClass = ASGameState::StaticClass();
 	PlayerStateClass = ASPlayerState::StaticClass();
 
+	bIsReadyToPlay = false;
+
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.TickInterval = 1.0f;
 }
@@ -31,6 +33,7 @@ void ASGameMode::StartPlay()
 
 void ASGameMode::ReadyToPlay()
 {
+	bIsReadyToPlay = true;
 	PrepareForNextWave();
 }
 
@@ -80,7 +83,7 @@ void ASGameMode::CheckWaveState()
 {
 	bool bIsPreparingForWave = GetWorldTimerManager().IsTimerActive(TimerHandle_NextWaveStart);
 
-	if (NrOfBotsToSpawn > 0 || bIsPreparingForWave)
+	if (!bIsReadyToPlay || NrOfBotsToSpawn > 0 || bIsPreparingForWave)
 	{
 		return;
 	}

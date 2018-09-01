@@ -10,6 +10,7 @@
 #include <TimerManager.h>
 #include "HordeGame.h"
 #include <Net/UnrealNetwork.h>
+#include "SCharacter.h"
 
 
 static int32 DebugWeaponDrawing = 0;
@@ -48,15 +49,20 @@ void ASWeapon::Fire()
 	//Trace the world, from pawn eyes to crosshair location
 	if (Role < ROLE_Authority)
 	{
+		ASCharacter * MyOwner = Cast<ASCharacter>(GetOwner());
+		MyOwner->BulletCount++;
+
 		ServerFire();
 		return;
 	}
 
 	if (CurrentAmmo >= MaxAmmo || CurrentRound >= MaxRound) return;
 
-	AActor * MyOwner = GetOwner();
+	ASCharacter * MyOwner = Cast<ASCharacter>(GetOwner());
 	if (MyOwner)
 	{
+		
+		MyOwner->BulletCount++;
 		FVector EyesLocation;
 		FRotator EyesRotation;
 		MyOwner->GetActorEyesViewPoint(EyesLocation,EyesRotation);
@@ -184,6 +190,7 @@ void ASWeapon::PlayImpactEffects(EPhysicalSurface SurfaceType, FVector ImpactPoi
 void ASWeapon::ServerFire_Implementation()
 {
 	Fire();
+	
 }
 
 bool ASWeapon::ServerFire_Validate()

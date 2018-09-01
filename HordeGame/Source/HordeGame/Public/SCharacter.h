@@ -74,7 +74,7 @@ protected:
 
 public:
 	//This is done for the AI know when it has to reload it's weapon. 
-	UPROPERTY(BlueprintReadWrite,Category="AI")
+	UPROPERTY(BlueprintReadOnly,Category="AI")
 	int BulletCount = 0;
 
 	
