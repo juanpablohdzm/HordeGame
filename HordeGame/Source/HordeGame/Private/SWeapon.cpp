@@ -23,6 +23,8 @@ ASWeapon::ASWeapon()
 	MeshComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh Comp"));
 	RootComponent = MeshComp;
 
+	
+
 	MuzzleSocketName = "MuzzleSocket";
 	TraceTargetName = "BeamEnd";
 	BaseDamage = 20.0f;
@@ -43,6 +45,10 @@ void ASWeapon::BeginPlay()
 	Super::BeginPlay();
 	TimeBetweenShots = 60 / RateOfFire;
 }
+
+
+
+
 
 void ASWeapon::Fire()
 {
@@ -217,6 +223,8 @@ bool ASWeapon::ServerStopFire_Validate()
 {
 	return true;
 }
+
+
 
 void ASWeapon::StopFire()
 {

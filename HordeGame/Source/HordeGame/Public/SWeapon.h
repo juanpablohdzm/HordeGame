@@ -123,7 +123,10 @@ protected:
 	UFUNCTION()
 	virtual void OnRep_HitScanTrace();
 
+	
+
 public:	
+
 
 	virtual void StopFire();
 	virtual void StartFire();

@@ -8,7 +8,7 @@ public class HordeGame : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore","UMG", "OnlineSubsystem", "OnlineSubsystemSteam" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore","UMG", "OnlineSubsystem", "OnlineSubsystemSteam","NavigationSystem" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

@@ -35,6 +35,9 @@ protected:
 	
 	UPROPERTY(EditInstanceOnly, Category = "PickupActor")
 	float SpawnWaitTime;
+
+	UPROPERTY(EditInstanceOnly, Category = "PickupActor")
+	TSubclassOf<AActor> PlayerClass;
 	
 	ASPowerupActor* PowerupInstance;
 

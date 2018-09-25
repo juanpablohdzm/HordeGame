@@ -35,6 +35,8 @@ ASCharacter::ASCharacter()
 	HealthComp = CreateDefaultSubobject<USHealthComponent>(TEXT("HealthComp"));
 
 
+
+
 	ZoomFOV = 65.0f;
 	ZoomInterpSpeed = 20.0f;
 	bDied = false;
@@ -68,10 +70,18 @@ void ASCharacter::Tick(float DeltaTime)
 	
 }
 
+
+
 void ASCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	HealthComp->OnHealthChanged.AddDynamic(this, &ASCharacter::OnHealthChange);
+}
+
+void ASCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	Weapon->Destroy();
 }
 
 FVector ASCharacter::GetPawnViewLocation() const
@@ -83,6 +93,8 @@ FVector ASCharacter::GetPawnViewLocation() const
 	return Super::GetPawnViewLocation();
 	
 }
+
+
 
 void ASCharacter::MoveForward(float value)
 {

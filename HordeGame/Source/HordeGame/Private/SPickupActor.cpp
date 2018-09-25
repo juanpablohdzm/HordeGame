@@ -4,6 +4,7 @@
 #include <Components/SphereComponent.h>
 #include <Components/DecalComponent.h>
 #include <Engine/World.h>
+#include <ConstructorHelpers.h>
 #include "Powerups/SPowerupActor.h"
 #include "SCharacter.h"
 
@@ -19,6 +20,10 @@ ASPickupActor::ASPickupActor()
 	DecalComp->SetupAttachment(RootComponent);
 	DecalComp->SetRelativeRotation(FRotator(90.0f, 0.0f, 0.0f));
 	DecalComp->DecalSize = FVector(64, 75, 75);
+
+
+	static ConstructorHelpers::FClassFinder<AActor> PlayerPawnClassFinder(TEXT("/Game/Blueprints/Characters/BP_PlayerPawn"));
+	PlayerClass = PlayerPawnClassFinder.Class;
 
 	SpawnWaitTime = 10.0f;
 
@@ -54,8 +59,8 @@ void ASPickupActor::RespawnPowerup()
 void ASPickupActor::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
-	ASCharacter * MyCharacter = Cast<ASCharacter>(OtherActor);
-	if (MyCharacter && Role == ROLE_Authority && PowerupInstance)
+	
+	if (OtherActor->IsA(PlayerClass) && Role == ROLE_Authority && PowerupInstance)
 	{
 		
 		PowerupInstance->ActivatePowerup(OtherActor);

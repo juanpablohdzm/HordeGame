@@ -22,6 +22,8 @@ protected:
 
 	virtual void PostInitializeComponents() override;
 
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
 	
 
 public:	
@@ -32,6 +34,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual FVector GetPawnViewLocation() const override;
+
+	
 
 protected:
 	/*
