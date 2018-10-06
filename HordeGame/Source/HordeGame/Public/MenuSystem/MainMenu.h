@@ -48,12 +48,16 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * JoinGame;
+	
 
 	UPROPERTY(meta = (BindWidget))
 		class UWidgetSwitcher* SwitcherMenu;
 
 	UPROPERTY(meta = (BindWidget))
 		class UWidget* JoinMenu;
+	
+	UPROPERTY(meta = (BindWidget))
+		class UWidget* HostMenu;
 
 	UPROPERTY(meta = (BindWidget))
 		class UWidget* MainMenu;
@@ -63,6 +67,12 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * Back;
+	
+	UPROPERTY(meta = (BindWidget))
+		class UButton * BackHost;
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton * HostMenuButton;
 
 	/*UPROPERTY(meta = (BindWidget))
 	class UEditableText * IPAddress;*/
@@ -83,7 +93,8 @@ private:
 
 	UFUNCTION()
 		void OpenMainMenu();
-
+	UFUNCTION()
+		void OpenHostMenu();
 	IMenuInterface * MenuInterface;
 
 	TSubclassOf<class UUserWidget> ServerRowClass;
