@@ -32,15 +32,23 @@ bool UMainMenu::Initialize()
 	if (!ensure(Join != nullptr)) return false;
 	Join->OnClicked.AddDynamic(this, &UMainMenu::OpenJoinMenu);
 
+	if (!ensure(Options != nullptr)) return false;
+	Options->OnClicked.AddDynamic(this, &UMainMenu::OpenOptionsMenu);
+
 	if (!ensure(Back != nullptr)) return false;
 	Back->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
 	
 	if (!ensure(BackHost != nullptr)) return false;
 	BackHost->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
 
+	if (!ensure(BackControls != nullptr)) return false;
+	BackControls->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
+
+
 	if (!ensure(JoinGame != nullptr)) return false;
 	JoinGame->OnClicked.AddDynamic(this, &UMainMenu::OnJoinGameClick);
 
+	
 
 	return true;
 }
@@ -158,5 +166,12 @@ void UMainMenu::OpenHostMenu()
 	if (!ensure(SwitcherMenu != nullptr)) return;
 	if (!ensure(JoinMenu != nullptr)) return;
 	SwitcherMenu->SetActiveWidget(HostMenu);
+}
+
+void UMainMenu::OpenOptionsMenu()
+{
+	if (!ensure(SwitcherMenu != nullptr)) return;
+	if (!ensure(ControlsMenu != nullptr)) return;
+	SwitcherMenu->SetActiveWidget(ControlsMenu);
 }
 
