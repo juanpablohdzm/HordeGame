@@ -13,7 +13,7 @@
 
 UMainMenu::UMainMenu(const FObjectInitializer &ObjectInitializer) :Super(ObjectInitializer)
 {
-	static ConstructorHelpers::FClassFinder<UServerRow> ServerRowBPClass(TEXT("/Game/Blueprints/UI/WBP_ServerRow"));
+	static ConstructorHelpers::FClassFinder<UServerRow> ServerRowBPClass(TEXT("/Game/UI/BP/WBP_ServerRow"));
 	if (!ensure(ServerRowBPClass.Class != NULL)) return;
 	ServerRowClass = ServerRowBPClass.Class;
 }

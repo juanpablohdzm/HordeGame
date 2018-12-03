@@ -22,7 +22,7 @@ ASPickupActor::ASPickupActor()
 	DecalComp->DecalSize = FVector(64, 75, 75);
 
 
-	static ConstructorHelpers::FClassFinder<AActor> PlayerPawnClassFinder(TEXT("/Game/Blueprints/Characters/BP_PlayerPawn"));
+	static ConstructorHelpers::FClassFinder<AActor> PlayerPawnClassFinder(TEXT("/Game/Characters/BP/BP_PlayerPawn"));
 	PlayerClass = PlayerPawnClassFinder.Class;
 
 	SpawnWaitTime = 10.0f;

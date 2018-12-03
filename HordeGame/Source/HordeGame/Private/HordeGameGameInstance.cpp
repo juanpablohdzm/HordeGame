@@ -16,11 +16,11 @@ const static FName SERVER_NAME_SETTINGS_KEY = TEXT("ServerName");
 
 UHordeGameGameInstance::UHordeGameGameInstance(const FObjectInitializer &ObjectInitializer)
 {
-	static ConstructorHelpers::FClassFinder<UMainMenu> MenuBPClass(TEXT("/Game/Blueprints/UI/WBP_MainMenu")); 
+	static ConstructorHelpers::FClassFinder<UMainMenu> MenuBPClass(TEXT("/Game/UI/BP/WBP_MainMenu")); 
 	if (!ensure(MenuBPClass.Class != NULL)) return;
 	MenuClass = MenuBPClass.Class;
 
-	static ConstructorHelpers::FClassFinder<UInGameMenu> InGameMenuBPClass(TEXT("/Game/Blueprints/UI/WBP_InGameMenu"));
+	static ConstructorHelpers::FClassFinder<UInGameMenu> InGameMenuBPClass(TEXT("/Game/UI/BP/WBP_InGameMenu"));
 	if (!ensure(InGameMenuBPClass.Class != NULL)) return;
 	InGameMenuClass = InGameMenuBPClass.Class;
 
