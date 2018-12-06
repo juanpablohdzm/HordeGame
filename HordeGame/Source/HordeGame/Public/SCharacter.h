@@ -15,6 +15,7 @@ public:
 	// Sets default values for this character's properties
 	ASCharacter();
 
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -62,6 +63,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
 	bool bWantsToZoom;
 
+
 	UPROPERTY(EditDefaultsOnly, Category = "Player", meta = (ClampMin = 0.0f, ClampMax = 100.0f))
 	float ZoomInterpSpeed;
 
@@ -74,6 +76,10 @@ protected:
 	/* Pawn life status*/
 	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
 	bool bDied;
+
+	/* Replicated variable for reaload*/
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Player")
+	bool bReload;
 
 
 public:
@@ -102,6 +108,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void StopFire();
+
+	UFUNCTION()
+	void SetReload();
 	
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void ReloadWeapon();

@@ -40,6 +40,7 @@ ASCharacter::ASCharacter()
 	ZoomFOV = 65.0f;
 	ZoomInterpSpeed = 20.0f;
 	bDied = false;
+	bReload = false;
 
 }
 
@@ -132,6 +133,11 @@ void ASCharacter::StopFire()
 	}
 }
 
+void ASCharacter::SetReload()
+{
+	 bReload = true; 
+}
+
 void ASCharacter::ReloadWeapon()
 {
 	if (Weapon)
@@ -174,7 +180,7 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ASCharacter::StartFire);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ASCharacter::StopFire);
 
-	PlayerInputComponent->BindAction("Reload", IE_Released, this, &ASCharacter::ReloadWeapon);
+	PlayerInputComponent->BindAction("Reload", IE_Released, this, &ASCharacter::SetReload);
 
 	PlayerInputComponent->BindAction("Zoom", IE_Pressed, this, &ASCharacter::BeginZoom);
 	PlayerInputComponent->BindAction("Zoom", IE_Released, this, &ASCharacter::EndZoom);
@@ -240,6 +246,7 @@ void ASCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLi
 	
 	DOREPLIFETIME(ASCharacter, Weapon);
 	DOREPLIFETIME(ASCharacter, bDied);
+	DOREPLIFETIME(ASCharacter, bReload);
 
 	//Rotation is being replicated in parent´s class, but if you want to show in animation BP you have to use GetBaseAimRotation 
 }
