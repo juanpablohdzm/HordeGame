@@ -17,11 +17,11 @@ const static FName SERVER_NAME_SETTINGS_KEY = TEXT("ServerName");
 UHordeGameGameInstance::UHordeGameGameInstance(const FObjectInitializer &ObjectInitializer)
 {
 	static ConstructorHelpers::FClassFinder<UMainMenu> MenuBPClass(TEXT("/Game/UI/BP/WBP_MainMenu")); 
-	if (!ensure(MenuBPClass.Class != NULL)) return;
+	if (!ensure(MenuBPClass.Class != NULL)) { UE_LOG(LogTemp, Warning, TEXT("Menu BP Class missing")); return; }
 	MenuClass = MenuBPClass.Class;
 
 	static ConstructorHelpers::FClassFinder<UInGameMenu> InGameMenuBPClass(TEXT("/Game/UI/BP/WBP_InGameMenu"));
-	if (!ensure(InGameMenuBPClass.Class != NULL)) return;
+	if (!ensure(InGameMenuBPClass.Class != NULL)) { UE_LOG(LogTemp, Warning, TEXT("In Game Menu BP Class missing")); return; }
 	InGameMenuClass = InGameMenuBPClass.Class;
 
 
@@ -54,10 +54,10 @@ void UHordeGameGameInstance::Init()
 void UHordeGameGameInstance::LoadMenuWidget()
 {
 
-	if (!ensure(MenuClass != nullptr)) return;
+	if (!ensure(MenuClass != nullptr)) { UE_LOG(LogTemp, Warning, TEXT("Menu Class missing")); return; }
 	Menu = CreateWidget<UMainMenu>(this, MenuClass);
 
-	if (!ensure(Menu != nullptr)) return;
+	if (!ensure(Menu != nullptr)) { UE_LOG(LogTemp, Warning, TEXT("Menu  missing")); return; }
 	Menu->Setup();
 
 	Menu->SetMenuInterface(this);

@@ -52,6 +52,8 @@ private:
 	UPROPERTY(meta = (BindWidget))
 		class UButton * Options;
 	
+	UPROPERTY(meta = (BindWidget))
+		class UButton * CharacterSelection;
 
 	UPROPERTY(meta = (BindWidget))
 		class UWidgetSwitcher* SwitcherMenu;
@@ -69,6 +71,9 @@ private:
 		class UWidget* MainMenu;
 
 	UPROPERTY(meta = (BindWidget))
+		class UWidget* CharacterSelectionMenu;
+
+	UPROPERTY(meta = (BindWidget))
 		class UButton * Join;
 
 	UPROPERTY(meta = (BindWidget))
@@ -79,6 +84,9 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * BackControls;
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton * BackCharacter;
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * HostMenuButton;
@@ -108,6 +116,9 @@ private:
 
 	UFUNCTION()
 		void OpenOptionsMenu();
+
+	UFUNCTION()
+		void OpenCharacterSelectionMenu();
 
 	IMenuInterface * MenuInterface;
 

@@ -11,6 +11,17 @@
 /**
  * 
  */
+
+UENUM(BlueprintType)
+enum class ECharacterType : uint8
+{
+	CT_BELICA UMETA(DisplayName = "Belica"),
+	CT_TWINBLAST UMETA(DisplayName = "Twinblast"),
+	CT_WRAITH UMETA(DisplayName = "Wraith"),
+	CT_MANNEQUIN UMETA(DisplayName = "Mannequin")
+};
+
+
 UCLASS()
 class HORDEGAME_API UHordeGameGameInstance : public UGameInstance, public IMenuInterface
 {
@@ -43,6 +54,12 @@ public:
 	UFUNCTION(BlueprintCallable,Category="GameInstance")
 	void StartSession();
 
+	UFUNCTION(BlueprintCallable, Category = "Character Selection")
+		ECharacterType GetCharacterType() const { return CharacterType; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character Selection")
+		void SetCharacterType(ECharacterType type) { CharacterType = type; }
+
 private:
 	TSubclassOf<class UUserWidget> MenuClass;
 
@@ -67,6 +84,11 @@ private:
 	void OnDestroySessionComplete(FName SessionName, bool Success);
 	void OnFindSessionComplete(bool Success);
 	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
+
+	UPROPERTY()
+	ECharacterType CharacterType;
+
+	
 
 
 	

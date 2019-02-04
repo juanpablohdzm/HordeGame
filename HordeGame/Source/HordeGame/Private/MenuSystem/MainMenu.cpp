@@ -48,6 +48,9 @@ bool UMainMenu::Initialize()
 	if (!ensure(JoinGame != nullptr)) return false;
 	JoinGame->OnClicked.AddDynamic(this, &UMainMenu::OnJoinGameClick);
 
+	if (!ensure(CharacterSelection != nullptr)) return false;
+	CharacterSelection->OnClicked.AddDynamic(this, &UMainMenu::OpenCharacterSelectionMenu);
+
 	
 
 	return true;
@@ -173,5 +176,12 @@ void UMainMenu::OpenOptionsMenu()
 	if (!ensure(SwitcherMenu != nullptr)) return;
 	if (!ensure(ControlsMenu != nullptr)) return;
 	SwitcherMenu->SetActiveWidget(ControlsMenu);
+}
+
+void UMainMenu::OpenCharacterSelectionMenu()
+{
+	if (!ensure(CharacterSelectionMenu != nullptr)) return;
+	if (!ensure(SwitcherMenu != nullptr)) return;
+	SwitcherMenu->SetActiveWidget(CharacterSelectionMenu);
 }
 
