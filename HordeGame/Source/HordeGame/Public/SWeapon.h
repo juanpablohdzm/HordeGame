@@ -127,9 +127,13 @@ protected:
 
 public:	
 
-
+	UFUNCTION(BlueprintCallable, Category = "VR")
 	virtual void StopFire();
+
+	UFUNCTION(BlueprintCallable, Category = "VR")
 	virtual void StartFire();
+
+	UFUNCTION(BlueprintCallable, Category = "VR")
 	virtual void Reload();
 
 };
