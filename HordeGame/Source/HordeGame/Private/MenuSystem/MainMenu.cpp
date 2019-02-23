@@ -26,32 +26,14 @@ bool UMainMenu::Initialize()
 	if (!ensure(Host != nullptr)) return false;
 	Host->OnClicked.AddDynamic(this, &UMainMenu::OnHostClick);
 
-	if (!ensure(HostMenuButton != nullptr)) return false;
-	HostMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenHostMenu);
-
+	
 	if (!ensure(Join != nullptr)) return false;
 	Join->OnClicked.AddDynamic(this, &UMainMenu::OpenJoinMenu);
 
-	if (!ensure(Options != nullptr)) return false;
-	Options->OnClicked.AddDynamic(this, &UMainMenu::OpenOptionsMenu);
-
-	if (!ensure(Back != nullptr)) return false;
-	Back->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
 	
-	if (!ensure(BackHost != nullptr)) return false;
-	BackHost->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
-
-	if (!ensure(BackControls != nullptr)) return false;
-	BackControls->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
-
-
 	if (!ensure(JoinGame != nullptr)) return false;
 	JoinGame->OnClicked.AddDynamic(this, &UMainMenu::OnJoinGameClick);
 
-	if (!ensure(CharacterSelection != nullptr)) return false;
-	CharacterSelection->OnClicked.AddDynamic(this, &UMainMenu::OpenCharacterSelectionMenu);
-
-	
 
 	return true;
 }
@@ -156,32 +138,11 @@ void UMainMenu::OpenJoinMenu()
 	MenuInterface->RefreshServerList();
 }
 
-void UMainMenu::OpenMainMenu()
-{
-	if (!ensure(SwitcherMenu != nullptr)) return;
-	if (!ensure(MainMenu != nullptr)) return;
-	SwitcherMenu->SetActiveWidget(MainMenu);
-}
 
 
-void UMainMenu::OpenHostMenu()
-{
-	if (!ensure(SwitcherMenu != nullptr)) return;
-	if (!ensure(JoinMenu != nullptr)) return;
-	SwitcherMenu->SetActiveWidget(HostMenu);
-}
 
-void UMainMenu::OpenOptionsMenu()
-{
-	if (!ensure(SwitcherMenu != nullptr)) return;
-	if (!ensure(ControlsMenu != nullptr)) return;
-	SwitcherMenu->SetActiveWidget(ControlsMenu);
-}
 
-void UMainMenu::OpenCharacterSelectionMenu()
-{
-	if (!ensure(CharacterSelectionMenu != nullptr)) return;
-	if (!ensure(SwitcherMenu != nullptr)) return;
-	SwitcherMenu->SetActiveWidget(CharacterSelectionMenu);
-}
+
+
+
 

@@ -39,60 +39,25 @@ protected:
 	virtual bool Initialize() override;
 
 	virtual void OnLevelRemovedFromWorld(ULevel * InLevel, UWorld * InWorld) override;
-private:
-
 
 	//Names have to be the same as in blueprint when you use BindWidget
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(meta = (BindWidget),VisibleAnywhere,BlueprintReadWrite)
 		class UButton * Host;
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * JoinGame;
 
-	UPROPERTY(meta = (BindWidget))
-		class UButton * Options;
-	
-	UPROPERTY(meta = (BindWidget))
-		class UButton * CharacterSelection;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(meta = (BindWidget), VisibleAnywhere, BlueprintReadWrite)
 		class UWidgetSwitcher* SwitcherMenu;
 
 	UPROPERTY(meta = (BindWidget))
 		class UWidget* JoinMenu;
 	
-	UPROPERTY(meta = (BindWidget))
-		class UWidget* HostMenu;
-
-	UPROPERTY(meta = (BindWidget))
-		class UWidget* ControlsMenu;
-
-	UPROPERTY(meta = (BindWidget))
-		class UWidget* MainMenu;
-
-	UPROPERTY(meta = (BindWidget))
-		class UWidget* CharacterSelectionMenu;
 
 	UPROPERTY(meta = (BindWidget))
 		class UButton * Join;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton * Back;
 	
-	UPROPERTY(meta = (BindWidget))
-		class UButton * BackHost;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton * BackControls;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton * BackCharacter;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton * HostMenuButton;
-
-	/*UPROPERTY(meta = (BindWidget))
-	class UEditableText * IPAddress;*/
 	UPROPERTY(meta = (BindWidget))
 		class UEditableText * HostName;
 
@@ -108,17 +73,7 @@ private:
 	UFUNCTION()
 		void OpenJoinMenu();
 
-	UFUNCTION()
-		void OpenMainMenu();
 	
-	UFUNCTION()
-		void OpenHostMenu();
-
-	UFUNCTION()
-		void OpenOptionsMenu();
-
-	UFUNCTION()
-		void OpenCharacterSelectionMenu();
 
 	IMenuInterface * MenuInterface;
 
