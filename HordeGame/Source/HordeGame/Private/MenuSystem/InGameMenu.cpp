@@ -17,9 +17,6 @@ bool UInGameMenu::Initialize()
 	bool result = Super::Initialize();
 	if (!result) return false;
 
-	if (!ensure(Cancel != nullptr))return false;
-	Cancel->OnClicked.AddDynamic(this, &UInGameMenu::OnCancelClicked);
-
 	if (!ensure(Quit != nullptr))return false;
 	Quit->OnClicked.AddDynamic(this, &UInGameMenu::OnQuitClicked);
 
@@ -54,29 +51,9 @@ void UInGameMenu::OnLevelRemovedFromWorld(ULevel * InLevel, UWorld * InWorld)
 	PlayerController->bShowMouseCursor = false;
 }
 
-void UInGameMenu::OnCancelClicked()
-{
-	this->RemoveFromViewport();
-	UWorld * World = GetWorld();
-	if (!ensure(World != nullptr))return;
-
-	APlayerController * PlayerController = World->GetFirstPlayerController();
-	if (!ensure(PlayerController != nullptr))return;
-
-	FInputModeGameOnly InputModeData;
-	PlayerController->SetInputMode(InputModeData);
-	PlayerController->bShowMouseCursor = false;
-}
-
 void UInGameMenu::OnQuitClicked()
 {
-	/*UWorld * World = GetWorld();
-	if (!ensure(World != nullptr))return;
-
-	APlayerController * PlayerController = World->GetFirstPlayerController();
-	if (!ensure(PlayerController != nullptr))return;
-
-	PlayerController->ConsoleCommand("quit");*/
+	
 	if (MenuInterface != nullptr)
 	{
 		MenuInterface->Leave();

@@ -28,15 +28,8 @@ protected:
 private:
 
 
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton* Cancel;
-
 	UPROPERTY(meta = (BindWidget))
 		class UButton* Quit;
-
-	UFUNCTION()
-		void OnCancelClicked();
 
 	UFUNCTION()
 		void OnQuitClicked();
