@@ -10,6 +10,8 @@
 #include <Components/CapsuleComponent.h>
 #include <Engine/World.h>
 #include <Net/UnrealNetwork.h>
+#include <Components/InputComponent.h>
+#include <Components/SkeletalMeshComponent.h>
 
 
 
@@ -193,7 +195,6 @@ void ASCharacter::WeaponSpawn()
 	if (RifleClass)
 	{
 
-
 		const FVector SocketLocation = GetMesh()->GetSocketLocation("WeaponSocket");
 		const FRotator SocketRotation = GetMesh()->GetSocketRotation("WeaponSocket");
 
@@ -248,7 +249,7 @@ void ASCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLi
 	DOREPLIFETIME(ASCharacter, bDied);
 	DOREPLIFETIME(ASCharacter, bReload);
 
-	//Rotation is being replicated in parent´s class, but if you want to show in animation BP you have to use GetBaseAimRotation 
+	//Rotation is being replicated in parent's class, but if you want to show in animation BP you have to use GetBaseAimRotation 
 }
 
 
