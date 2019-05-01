@@ -7,6 +7,7 @@
 #include <Particles/ParticleSystem.h>
 #include <Particles/ParticleSystemComponent.h>
 #include <PhysicalMaterials/PhysicalMaterial.h>
+#include <Sound/SoundCue.h>
 #include <TimerManager.h>
 #include "HordeGame.h"
 #include <Net/UnrealNetwork.h>
@@ -158,6 +159,11 @@ void ASWeapon::PlayFireEffects(FVector TraceEnd)
 		{
 			ParticleSysComp->SetVectorParameter(TraceTargetName, TraceEnd);
 		}
+	}
+
+	if (FireSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(),FireSound, GetActorLocation());
 	}
 
 	APawn * MyOwner = Cast<APawn>(GetOwner());

@@ -61,6 +61,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	TSubclassOf<class UCameraShake> FireCamShake;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	class USoundCue* FireSound;
+
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	FName MuzzleSocketName;
