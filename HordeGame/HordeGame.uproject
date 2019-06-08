@@ -20,12 +20,12 @@
 			"Enabled": true
 		},
 		{
-			"Name": "WindowsMixedReality",
-			"Enabled": true,
-			"SupportedTargetPlatforms": [
-				"Win32",
-				"Win64"
-			]
+			"Name": "OculusVR",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamVR",
+			"Enabled": false
 		}
 	]
 }
