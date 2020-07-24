@@ -56,7 +56,7 @@ void ASWeapon::Fire()
 	//Trace the world, from pawn eyes to crosshair location
 	if (CurrentAmmo >= MaxAmmo || CurrentRound >= MaxRound) return;
 
-	if (Role < ROLE_Authority)
+	if (GetLocalRole() < ROLE_Authority)
 	{
 		ASCharacter * MyOwner = Cast<ASCharacter>(GetOwner());
  		MyOwner->BulletCount++;
@@ -121,7 +121,7 @@ void ASWeapon::Fire()
 		//This function is called in case the server is also a host 
 		PlayFireEffects(TraceEnd);
 
-		if (Role == ROLE_Authority)
+		if (GetLocalRole() == ROLE_Authority)
 		{
 			HitScanTrace.TraceTo = TraceEnd;
 			HitScanTrace.SurfaceType = SurfaceType;
@@ -134,7 +134,7 @@ void ASWeapon::Fire()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Miss owner in weapon, can´t shoot"));
+		UE_LOG(LogTemp, Warning, TEXT("Miss owner in weapon, canï¿½t shoot"));
 	}
 }
 

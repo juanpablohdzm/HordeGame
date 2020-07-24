@@ -51,7 +51,7 @@ void ASCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if(Role ==ROLE_Authority)
+	if(GetLocalRole() ==ROLE_Authority)
 		WeaponSpawn();
 
 	DefaultFOV=CameraComp->FieldOfView;
@@ -221,7 +221,7 @@ void ASCharacter::WeaponSpawn()
 
 void ASCharacter::OnHealthChange(USHealthComponent* HealthComponent, float Health, float HealthDelta, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 {
-	if (Role == ROLE_Authority)
+	if (GetLocalRole() == ROLE_Authority)
 	{
 		if (Health <= 0.0f && !bDied)
 		{

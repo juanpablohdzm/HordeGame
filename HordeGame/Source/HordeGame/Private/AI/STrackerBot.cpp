@@ -39,7 +39,7 @@ ASTrackerBot::ASTrackerBot()
 	SphereComp = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Comp"));
 	SphereComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SphereComp->SetCollisionResponseToAllChannels(ECR_Ignore); //Ignore everyone but...
-	SphereComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); //... my enemy, this just overlap don´t push. 
+	SphereComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); //... my enemy, this just overlap donï¿½t push. 
 	SphereComp->SetSphereRadius(DamageRadius);
 	SphereComp->SetupAttachment(MeshComp);
 
@@ -52,7 +52,7 @@ void ASTrackerBot::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (Role == ROLE_Authority)
+	if (GetLocalRole() == ROLE_Authority)
 	{
 		//Find initial go to
 		NextPathPoint = GetNextPathPoint();
@@ -68,7 +68,7 @@ void ASTrackerBot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (Role == ROLE_Authority && !bExploded)
+	if (GetLocalRole() == ROLE_Authority && !bExploded)
 	{
 		float DistanceToTarget = (GetActorLocation() - NextPathPoint).Size();
 
@@ -110,7 +110,7 @@ void ASTrackerBot::NotifyActorBeginOverlap(AActor* OtherActor)
 			UGameplayStatics::SpawnSoundAttached(SelfDestructSound, RootComponent);
 			//We overlapped with a player
 
-			if (Role == ROLE_Authority)
+			if (GetLocalRole() == ROLE_Authority)
 			{
 				//Self destruction sequence
 				GetWorldTimerManager().SetTimer(TimerHandle_SelfDamage, this, &ASTrackerBot::DamageSelf, DamageInterval, true, 0.0f);
@@ -197,7 +197,7 @@ void ASTrackerBot::SelfDestruct()
 	MeshComp->SetVisibility(false,true);
 	MeshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	if (Role == ROLE_Authority)
+	if (GetLocalRole() == ROLE_Authority)
 	{
 		TArray<AActor*>IgnoredActors;
 		IgnoredActors.Add(this);

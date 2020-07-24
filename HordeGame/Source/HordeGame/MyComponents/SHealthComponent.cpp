@@ -11,7 +11,6 @@ USHealthComponent::USHealthComponent()
 {
 	DefaultHealth = 100.0f;
 	bIsDead = false;
-	SetIsReplicated(true);
 
 	SetTeamNum(255);
 
@@ -21,6 +20,7 @@ USHealthComponent::USHealthComponent()
 // Called when the game starts
 void USHealthComponent::BeginPlay()
 {
+	SetIsReplicated(true);
 	Super::BeginPlay();
 
 	// ... Begin play is only called on the server, technically it is not necessary to use the next if

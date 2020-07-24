@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-RiderBlueprintExtension.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Legacy\UnrealEngine\_HordeGame\HordeGame\Intermediate\Build\Win64\HordeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.RTTI.h.obj"
+"D:\Legacy\UnrealEngine\_HordeGame\HordeGame\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderBlueprintExtension\Module.RiderBlueprintExtension.cpp.obj"
+"D:\Legacy\UnrealEngine\_HordeGame\HordeGame\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderBlueprintExtension\Default.rc2.res"
+/OUT:"D:\Legacy\UnrealEngine\_HordeGame\HordeGame\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderBlueprintExtension\UE4Editor-RiderBlueprintExtension.lib"
+/INCLUDE:IMPLEMENT_MODULE_RiderBlueprintExtension

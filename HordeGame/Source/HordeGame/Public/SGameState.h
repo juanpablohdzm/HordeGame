@@ -37,7 +37,7 @@ public:
 	void WaveStateChanged(EWaveState NewState, EWaveState OldState);
 
 	EWaveState GetWaveState() const { return WaveState; }
-	void SetWaveState(EWaveState val) { if (Role == ROLE_Authority) { OnRep_WaveState(WaveState); WaveState = val; } }
+	void SetWaveState(EWaveState val) { if (GetLocalRole() == ROLE_Authority) { OnRep_WaveState(WaveState); WaveState = val; } }
 protected:
 	UFUNCTION()
 	void OnRep_WaveState(EWaveState OldState);

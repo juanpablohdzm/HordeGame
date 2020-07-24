@@ -49,7 +49,7 @@ void ASExplosiveBarrel::PostInitializeComponents()
 
 void ASExplosiveBarrel::OnHealthChange(USHealthComponent* HealthComponent, float Health, float HealthDelta, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 {
-	if (Role == ROLE_Authority)
+	if (GetLocalRole() == ROLE_Authority)
 	{
 		if (Health <= 0.0f && !bExploded)
 		{
